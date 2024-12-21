@@ -1,4 +1,4 @@
-import { Header } from "../../public/components/componentsJxs/Header"
+import { Header } from "../components/componentsJxs/Header"
 function Home (){
     return(
         <>
