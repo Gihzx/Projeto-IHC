@@ -3,8 +3,8 @@ import {
     Routes,
     Route
 } from 'react-router-dom';
-import Home from "./pages/Home'";
-import Cradt from ".pages/Cradt";
+import Home from "./pages/Home";
+import Cradt from "./pages/Cradt";
 
 function AppRoutes() {
     return (

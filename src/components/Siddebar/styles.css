@@ -1,0 +1,25 @@
+.sidebar-nav {
+  width: 20%;
+  height: 100vh;
+  padding: 10px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  background-color: #eaf4e0; 
+}
+
+.siddebar-items {
+  display: flex;
+
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.siddebar-items > span > a {
+  text-decoration: none;
+  font-weight: 500;
+  color: #000;
+}
