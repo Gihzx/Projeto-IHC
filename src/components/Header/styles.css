@@ -1,4 +1,12 @@
-.container_logo  {
-    background-color: #53b446;
-    padding: 0.3rem;
+.container_logo {
+  background-color: #53b446;
+  padding: 0.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.icons {
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }

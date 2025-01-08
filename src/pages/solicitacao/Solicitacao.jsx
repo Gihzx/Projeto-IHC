@@ -1,9 +1,11 @@
 import "./styles.css";
 import Input from "../../components/UI/Input";
 import Button from "../../components/UI/Button";
+import Sidebar from "../../components/sideBar/SideBar";
 export function Solicitacao() {
   return (
     <>
+      <Sidebar />
       <main>
         <header className="header">
           <h1>Abono de faltas</h1>
@@ -51,7 +53,7 @@ export function Solicitacao() {
                 />
               </div>
               <div className="form-column">
-                <label htmlFor="" >Número da matrícula</label>
+                <label htmlFor="">Número da matrícula</label>
 
                 <Input
                   id="telefone"
