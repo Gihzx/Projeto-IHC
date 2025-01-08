@@ -1,4 +1,81 @@
-  .container-cradt{
+  .container-cradt {
+    width: 90%;
+    height: 90vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 10px;
+    align-items: center;
+
+    background-color: #fff;
+  }
+
+  .search-bar {
+    width: 100%;
+    padding: 10px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .search-bar > label {
+    width: 40%;
+  }
+
+  #inputSearch {
+    width: 40%;
+    padding: 4px;
+
+    border: 1px solid #00000088;
+    border-radius: 5px;
+  }
+
+  .container-type-process-cradt { 
+    width: 80%;
+    height: 25%;
+
+    padding: 30px;
+
+    display: flex;
+    justify-content: space-between;
+
+    border: none;
+    border-radius: 5px;
+
+    background-color: #D9D9D9;
+  }
+
+  .data-process, .status-process, .tipo-process {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 2px;
+
+    font-size: 0.9rem;
+  }
+
+  .container-input-check-process {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .container-list-cards-process {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+
+  /* .container-cradt{
     margin-top: 20px;
   }
   .search-bar, .filters, .recent{
@@ -68,4 +145,4 @@
   }
   .process-card button:houver{
     background-color: #0056b3;;
-  }
+  } */

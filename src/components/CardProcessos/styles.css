@@ -1,0 +1,98 @@
+.container-card {
+    width: 100%;
+    height: 25%;
+
+    border: 2px solid #DFEEDD;
+
+    background-color: #DFEEDD;
+}
+
+.header-card {
+    width: 100%;
+    padding: 4px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+}
+.logo-user-card {
+    width: 50px;
+    height: 50px;
+
+    padding: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    border-radius: 100%;
+
+    color: #ffff;
+    background-color: coral;
+}
+
+.header-card-details {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+}
+
+.subinfo {
+    font-size: 10px;
+    color: #000000b9;
+}
+
+.label-status {
+    width: 10%;
+
+    padding: 8px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    border: none;
+    border-radius: 5px;
+
+    background-color: #ffff;
+}
+.body-card {
+    width: 100%;
+    padding: 20px;
+}
+.body-card-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.body-card-details > span {
+    font-size: 10px;
+    color: #000000d3;
+}
+
+.footer-card {
+    width: 100%;
+
+    display: flex;
+
+}
+.btn-atender-solicitacao {
+    width: 100%;
+    padding: 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-decoration: none;
+
+    color: #000;
+    background-color: #fff;
+}
+
+.btn-atender-solicitacao:hover {
+    background-color: #e1e0e0;
+}

@@ -20,7 +20,7 @@ function Sidebar (){
                         size={30} 
                         weight={200}
                     />
-                    <a href="#">Início</a>
+                    <a href="/">Início</a>
                 </span>
                 <span className='items-icons-siddebar'>
                     <MaterialSymbol
@@ -28,7 +28,7 @@ function Sidebar (){
                         size={30} 
                         weight={200}
                     />
-                    <a href="#">Solicitações</a>
+                    <a href="/cradt" >Solicitações</a>
                 </span>
                 <span className='items-icons-siddebar'>
                     <MaterialSymbol
