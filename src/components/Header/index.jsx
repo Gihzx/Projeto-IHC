@@ -1,5 +1,4 @@
 import Logo from '/src/assets/logo.png';
-
 import './styles.css';
 
 function Header() { 
