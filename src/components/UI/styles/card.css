@@ -1,0 +1,39 @@
+.card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  max-width: 12%;
+  margin: 30px;
+
+}
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card-name {
+  background-color: #53b446; /* Cor do fundo do nome */
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px;
+  text-align: center;
+}
+
+.card-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.card-description {
+  padding: 10px;
+}
+
+.card-description p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #555;
+}
