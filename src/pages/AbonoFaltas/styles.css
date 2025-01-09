@@ -1,0 +1,119 @@
+.container-abono {
+    width: 80%;
+    height: 90vh;
+}
+
+.home-titulo {
+    padding: 20px;
+}
+
+main > .form-section > form {
+    width: 100%;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.first-group-fields {
+    width: 70%;
+
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    gap: 10px;
+}
+
+.first-group-fields > .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.first-group-fields > .form-group > input, select {
+    width: 60%;
+    padding: 4px;
+    border: 0.5px solid #00000084;
+    border-radius: 5px;
+}
+
+.first-group-fields > .form-group { 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}   
+
+.first-group-fields > .form-group > label {
+    width: 60%;
+    text-align: start;
+}
+
+.last-group-fields {
+    width: 70%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    gap: 10px;
+}
+
+.form-control {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-control > #select-anexo,#observacoes {
+    width: 30%;
+
+    padding: 4px;
+    border: 0.5px solid #00000084;
+    border-radius: 5px;
+}
+
+#arquivo {
+    display: none;
+}
+
+.custom-file-upload {
+    width: 30%;
+    padding: 4px;
+    
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    cursor: pointer;
+
+    font-size: 12px;
+
+    border: 0.5px solid #00000084;
+    border-radius: 5px;
+
+    color: #606060;
+    background-color: #fff;
+}
+
+.form-control > label {
+    width: 30%;
+    text-align: start;
+}
+
+.submit-btn-abono {
+    width: 20%;
+
+    padding: 10px;
+    margin-top: 10px;
+
+    border: none;
+    border-radius: 10px;
+
+    color: #fff;
+    background-color: #53B446;
+}

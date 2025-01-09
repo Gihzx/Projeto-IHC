@@ -28,7 +28,7 @@ function Sidebar (){
                         size={30} 
                         weight={200}
                     />
-                    <a href="/cradt" >Solicitações</a>
+                    <a href="/cradt" >CRA - Coordenação de Registro Acadêmico</a>
                 </span>
                 <span className='items-icons-siddebar'>
                     <MaterialSymbol
