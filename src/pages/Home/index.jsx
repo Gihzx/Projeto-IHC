@@ -49,7 +49,7 @@ function Home() {
                 </div>
 
                 <div className="form-group">
-                  <label htmlFor="contato">Telefone/Celular/Email</label>
+                  <label htmlFor="contato">Email</label>
                   <input type="text" id="contato" required />
                 </div>
 
