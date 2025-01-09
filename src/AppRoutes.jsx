@@ -8,7 +8,7 @@ import Cradt from "./pages/Cradt";
 
 function AppRoutes() {
     return (
-        <BrowserRouter basename='https://projeto-ihc-alpha.vercel.app'>
+        <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Home/>}></Route>
                 <Route path="/cradt"element={<Cradt/>}></Route>
