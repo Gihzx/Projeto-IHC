@@ -1,0 +1,80 @@
+/* Estilo geral do botão para abrir/fechar a sidebar */
+.sidebar-toggle {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 10px;
+  font-size: 16px;
+  background-color: #53b446; /* Cor de fundo */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar-toggle:hover {
+  background-color: #4a9e3f;
+}
+
+/* Estilo da Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -250px; /* Inicialmente escondida à esquerda */
+  width: 250px;
+  height: 100%;
+  background-color: #53b446;
+  color: white;
+  padding-top: 20px;
+  transition: left 0.3s ease;
+  z-index: 1000; /* Garantir que a sidebar fique sobre outros elementos */
+}
+
+.sidebar.open {
+  left: 0; /* A sidebar se move para a posição inicial quando aberta */
+}
+
+/* Estilo do botão de fechar dentro da sidebar */
+.sidebar-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.sidebar-close:hover {
+  color: #53b446;
+}
+
+/* Estilo dos itens do menu */
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  padding: 15px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar ul li:hover {
+  background-color: #558a4e;
+}
+
+/* Overlay (fundo que aparece quando a sidebar está aberta) */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Fundo translúcido */
+  z-index: 500; /* Garantir que o overlay fique abaixo da sidebar */
+}
