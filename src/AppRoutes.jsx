@@ -11,7 +11,7 @@ function AppRoutes() {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Home/>}></Route>
-                <Route path="/Cradt"element={<Cradt/>}></Route>
+                <Route path="/cradt"element={<Cradt/>}></Route>
             </Routes>
         </BrowserRouter>
     )
