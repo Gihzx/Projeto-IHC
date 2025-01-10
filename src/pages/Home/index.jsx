@@ -1,4 +1,5 @@
 import { Card } from '../../components/Card'
+import Formulario from '/src/assets//formulario-de-assinatura.png';
 
 import "./styles.css"
 
@@ -56,7 +57,7 @@ function Home() {
                 />
                 <Card
                     titulo="Renovação de Matrícula"
-                    url_image_card="./src/assets/formulario-de-assinatura.png"
+                    url_image_card={Formulario}
                     description="Obtenha apoio sobre a sua trajetória acadêmica"
                     url_view="#"
                 />
