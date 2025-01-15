@@ -40,8 +40,13 @@ function AbonoFaltas() {
                 <label htmlFor="curso">Curso</label>
                 <select id="curso" required onChange={e=> setCurso(e.target.value)} value={curso} >
                   <option value="">Selecione</option>
-                  <option value="curso1">Curso 1</option>
-                  <option value="curso2">Curso 2</option>
+                  <option value="curso1">Integrado - Administração</option>
+                  <option value="curso2">Integrado - Técnico em Desenvolvimento de Sistemas</option>
+                  <option value="curso3">Subsequente - Administração</option>
+                  <option value="curso4">Subsequente - Comércio e Gestão de Negócios</option>
+                  <option value="curso5">Subsequente - Informática para Internet</option>
+                  <option value="curso6">Subsequente - Qualidade</option>
+                  <option value="curso7">Superior - Análise e Desenvolvimento de Sistemas</option>
                 </select>
               </div>
 
@@ -83,7 +88,10 @@ function AbonoFaltas() {
                 <label htmlFor="anexo">Motivo da falta</label>
                 <select id="select-anexo" required onChange={e=>setMotivo(e.target.value)} value={motivo}>
                   <option value="">Selecione</option>
-                  <option value="atestado">Atestado médico</option>
+                  <option value="atestadoMedico">Problema de saúde, através de atestado médico assinado e carimbado por médico</option>
+                  <option value="declaracaoMilitar">Obrigações com o Serviço Militar</option>
+                  <option value="declaracaoObito">Falecimento de parente até 2º grau</option>
+                  <option value="declaracaoJudiciario">Convocação pelo Poder Judiciário ou Justiça Eleitoral</option>
                 </select>
               </div>
 
