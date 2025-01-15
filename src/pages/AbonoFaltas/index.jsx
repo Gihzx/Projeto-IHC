@@ -48,7 +48,7 @@ function AbonoFaltas() {
         <h2>Abono de faltas</h2>
       </div>
       <main>
-        <form action="POST"  >
+        
         <section className="form-section">
           <form>
             <div className="first-group-fields">
@@ -225,7 +225,6 @@ function AbonoFaltas() {
             </button>
           </form>
         </section>
-        </form>
       </main>
     </div>
   );
