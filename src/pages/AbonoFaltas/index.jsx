@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { MaterialSymbol } from "react-material-symbols";
 import "./styles.css";
@@ -218,7 +218,6 @@ function AbonoFaltas() {
                 </option>
               </select>
             </div>
-
             <div className="form-control">
               <label htmlFor="arquivo">Arquivo</label>
               <label className="custom-file-upload">
@@ -243,6 +242,7 @@ function AbonoFaltas() {
                 value={observacoes}
               ></textarea>
             </div>
+            
           </div>
           <button type="submit" className="submit-btn-abono">
             Solicitar
