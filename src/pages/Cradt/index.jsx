@@ -5,51 +5,7 @@ import "./styles.css";
 
 function Cradt() {
   const [processos, setProcessos] = useState([
-    {
-      nome: "Gabriel Otávio Nunes Filho",
-      curso: "Informática para Internet (Noite)",
-      matricula: "20232TI-JG0300",
-      motivo: "Trancamento de matrícula",
-      data_solicitacao: "23/05/2024 12:45:35",
-      processo: null,
-      status: "Pendente",
-    },
-    {
-          nome: "Filipe Ferreira de Oliveira",
-          curso: "Desenvolvimento de Sistema (Médio Integrado)",
-          matricula: "20232TI-JG0302",
-          motivo: "Abono de Falta",
-          data_solicitacao: "23/05/2024 12:50:34",
-          processo: "00000.000003/2024-38",
-          status: "Pendente",
-        },
-        {
-          nome: "Jamyli Maraia Silva",
-          curso: "Análise Desenvolvimento de Sistema (Manhã)",
-          matricula: "20232TI-JG0301",
-          motivo: "Trancamento de matrícula",
-          data_solicitacao: "23/05/2024 12:45:35",
-          processo: "00000.000002/2024-38",
-          status: "Pendente",
-        },
-        {
-          nome: "Filipe Ferreira de Oliveira",
-          curso: "Desenvolvimento de Sistema (Médio Integrado)",
-          matricula: "20232TI-JG0302",
-          motivo: "Abono de Falta",
-          data_solicitacao: "23/05/2024 12:50:34",
-          processo: "00000.000003/2024-38",
-          status: "Pendente",
-        },
-        {
-          nome: "Wilian Borges de Santos",
-          curso: "Técnico Qualidade (Noite)",
-          matricula: "20232QA-JG0303",
-          motivo: "Abono de Falta",
-          data_solicitacao: "23/05/2024 12:55:34",
-          processo: "00000.000004/2024-38",
-          status: "Concluído",
-        },
+   
   ]);
   useEffect(() => {
     fetchSolicitacao();
@@ -57,7 +13,9 @@ function Cradt() {
 
   const fetchSolicitacao = async () => {
     try {
-      const response = await api.get("/api/solicitacoes-abono");
+      const response = await api.get(
+        "http://localhost:8080/api/solicitacoes/abono"
+      );
       setProcessos(response.data);
     } catch (error) {
       console.error("erro ao listar solicitação", error);
