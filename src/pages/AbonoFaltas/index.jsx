@@ -106,19 +106,25 @@ function AbonoFaltas() {
                   value={curso}
                 >
                   <option value="">Selecione</option>
-                  <option value="curso1">Integrado - Administração</option>
-                  <option value="curso2">
+                  <option value="Integrado - Administração">
+                    Integrado - Administração
+                  </option>
+                  <option value="Integrado - Técnico em Desenvolvimento de Sistemas">
                     Integrado - Técnico em Desenvolvimento de Sistemas
                   </option>
-                  <option value="curso3">Subsequente - Administração</option>
-                  <option value="curso4">
+                  <option value="Subsequente - Administração">
+                    Subsequente - Administração
+                  </option>
+                  <option value=" Subsequente - Comércio e Gestão de Negócios">
                     Subsequente - Comércio e Gestão de Negócios
                   </option>
-                  <option value="curso5">
+                  <option value=" Subsequente - Informática para Internet">
                     Subsequente - Informática para Internet
                   </option>
-                  <option value="curso6">Subsequente - Qualidade</option>
-                  <option value="curso7">
+                  <option value="Subsequente - Qualidade">
+                    Subsequente - Qualidade
+                  </option>
+                  <option value="Superior - Análise e Desenvolvimento de Sistemas">
                     Superior - Análise e Desenvolvimento de Sistemas
                   </option>
                 </select>

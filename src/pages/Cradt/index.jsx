@@ -4,9 +4,7 @@ import api from "../../api";
 import "./styles.css";
 
 function Cradt() {
-  const [processos, setProcessos] = useState([
-   
-  ]);
+  const [processos, setProcessos] = useState([]);
   useEffect(() => {
     fetchSolicitacao();
   }, []);
@@ -17,11 +15,18 @@ function Cradt() {
         "http://localhost:8080/api/solicitacoes/abono"
       );
       setProcessos(response.data);
+      console.log(response.data);
     } catch (error) {
       console.error("erro ao listar solicitação", error);
     }
   };
-
+  const formatarData = (data) => {
+    const dataObj = new Date(data);
+    const dia = String(dataObj.getDate()).padStart(2, "0");
+    const mes = String(dataObj.getMonth() + 1).padStart(2, "0"); // Meses começam em 0
+    const ano = dataObj.getFullYear();
+    return `${dia}/${mes}/${ano}`;
+  };
   return (
     <div className="container-cradt">
       <div className="search-bar">
@@ -103,8 +108,8 @@ function Cradt() {
             curso={processo.curso}
             matricula={processo.matricula}
             motivo={processo.motivo}
-            data_solicitacao={processo.data_solicitacao}
-            processo={processo.processo || "N/A"}
+            dataSolicitacao={formatarData(processo.dataSolicitacao)}
+            processo={processo.id || "N/A"}
             status={processo.status}
           />
         ))}
