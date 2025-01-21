@@ -23,10 +23,11 @@ function Cradt() {
   const formatarData = (data) => {
     const dataObj = new Date(data);
     const dia = String(dataObj.getDate()).padStart(2, "0");
-    const mes = String(dataObj.getMonth() + 1).padStart(2, "0"); // Meses começam em 0
+    const mes = String(dataObj.getMonth() + 1).padStart(2, "0"); 
     const ano = dataObj.getFullYear();
     return `${dia}/${mes}/${ano}`;
   };
+
   return (
     <div className="container-cradt">
       <div className="search-bar">

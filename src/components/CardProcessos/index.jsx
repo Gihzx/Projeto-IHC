@@ -1,5 +1,15 @@
 import "./styles.css";
+import { useNavigate } from "react-router-dom";
+
 function CardProcessos(props) {
+  const navigate = useNavigate();
+  const handleProcessoClick = () => {
+    console.log("Navigating to:", `/solicitacoes/${props.id}`);  // A URL será gerada corretamente com o id real
+    navigate(`/solicitacoes/${props.id}`);
+  };
+  
+  console.log(props.id);
+
   return (
     <div className="container-card">
       <div className="header-card">
@@ -15,16 +25,18 @@ function CardProcessos(props) {
         <div className="body-card-details">
           <span>Motivo: {props.motivo}</span>
           <span>Data solicitação: {props.dataSolicitacao}</span>
-          <span>Processo: {props.processo}</span>
+          <span>Processo: {props.id}</span>
         </div>
       </div>
       <div className="footer-card">
-        <a href="#" className="btn-atender-solicitacao">
+        <button
+          className="btn-atender-solicitacao"
+          onClick={handleProcessoClick}
+        >
           Atender solicitação
-        </a>
+        </button>
       </div>
     </div>
   );
 }
-
 export default CardProcessos;
