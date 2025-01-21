@@ -1,6 +1,5 @@
 import { Card } from '../../components/Card'
 import Formulario from '/src/assets//formulario-de-assinatura.png';
-
 import "./styles.css"
 
 function Home() {
