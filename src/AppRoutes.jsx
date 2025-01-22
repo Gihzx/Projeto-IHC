@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import AbonoFaltas from "./pages/AbonoFaltas";
 import Cradt from "./pages/Cradt";
+import Login from "./pages/login";
 import DetalhesProcesso from "./pages/atendimento";
 
 function AppRoutes() {
@@ -12,7 +13,7 @@ function AppRoutes() {
         <Route path="/AbonoFaltas" element={<AbonoFaltas />}></Route>
         <Route path="/cradt" element={<Cradt />}></Route>
         <Route path="/solicitacoes/:id" element={<DetalhesProcesso />} />
-  
+        <Route path="/login" element={<Login />} />
       </Routes>
     </BrowserRouter>
   );
