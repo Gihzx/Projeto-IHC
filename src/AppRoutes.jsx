@@ -4,6 +4,7 @@ import AbonoFaltas from "./pages/AbonoFaltas";
 import Cradt from "./pages/Cradt";
 import Login from "./pages/login";
 import DetalhesProcesso from "./pages/atendimento";
+import { Status } from "./pages/status";
 
 function AppRoutes() {
   return (
@@ -14,6 +15,8 @@ function AppRoutes() {
         <Route path="/cradt" element={<Cradt />}></Route>
         <Route path="/solicitacoes/:id" element={<DetalhesProcesso />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/status" element={<Status />} />
+
       </Routes>
     </BrowserRouter>
   );

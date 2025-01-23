@@ -1,0 +1,90 @@
+.container-atendimento {
+  height: 100%;
+  width: 100%;
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+}
+  .user-info {
+  border: 1px solid;
+  background-color: #dbe5d1;
+  padding: 15px;
+  } 
+
+  .request-card {
+    background-color: white;
+    width: 100%;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .user-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .avatar {
+    width: 50px;
+    height: 50px;
+    background-color: #2e7d32;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin-right: 15px;
+  }
+  
+  .progress-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .step {
+    text-align: center;
+    flex: 1;
+  }
+  
+  .step span {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .step.completed span {
+    color: #2e7d32;
+  }
+  
+  .step.active span {
+    color: #f9a825;
+  }
+  
+  .step p {
+    font-size: 12px;
+    color: #666;
+  }
+  
+  .step:not(:last-child) {
+    position: relative;
+  }
+  
+  .step:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -50%;
+    transform: translateY(-50%);
+    height: 3px;
+    background-color: #ddd;
+    width: 100%;
+    z-index: -1;
+  }
+  
+  .step.completed:not(:last-child)::after {
+    background-color: #2e7d32;
+  }
