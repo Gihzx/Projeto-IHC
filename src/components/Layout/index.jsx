@@ -1,7 +1,6 @@
 import Header from "../Header";
 import Sidebar from "../Siddebar";
 import AppRoutes from "../../AppRoutes";
-
 import './styles.css';
 
 function Layout() {

@@ -3,12 +3,16 @@ import { useNavigate } from "react-router-dom";
 
 function CardProcessos(props) {
   const navigate = useNavigate();
+
   const handleProcessoClick = () => {
-    console.log("Navigating to:", `/solicitacoes/${props.id}`);  // A URL será gerada corretamente com o id real
-    navigate(`/solicitacoes/${props.id}`);
+    if (props.processo) { // Mude para props.processo
+      console.log("Navigating to:", `/solicitacoes/${props.processo}`);
+      navigate(`/solicitacoes/${props.processo}`);
+    } else {
+      console.error("ID não encontrado para a solicitação.");
+    }
   };
   
-  console.log(props.id);
 
   return (
     <div className="container-card">
@@ -19,7 +23,7 @@ function CardProcessos(props) {
           <span className="subinfo">Curso: {props.curso}</span>
           <span className="subinfo">Matricula: {props.matricula}</span>
         </div>
-        <span className="label-status">{props.status}</span>
+        <span className="label-status">{props.statusDescricao}</span>
       </div>
       <div className="body-card">
         <div className="body-card-details">
@@ -39,4 +43,5 @@ function CardProcessos(props) {
     </div>
   );
 }
+
 export default CardProcessos;

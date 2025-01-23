@@ -40,7 +40,7 @@ function AbonoFaltas() {
 
     try {
       const response = await axios.post(
-        "http://localhost:8080/api/solicitacoes",
+        "http://localhost:8080/api/solicitacoes/abono",
         formData,
         {
           headers: {

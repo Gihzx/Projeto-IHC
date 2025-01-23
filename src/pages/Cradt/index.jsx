@@ -11,9 +11,7 @@ function Cradt() {
 
   const fetchSolicitacao = async () => {
     try {
-      const response = await api.get(
-        "http://localhost:8080/api/solicitacoes/abono"
-      );
+      const response = await api.get("http://localhost:8080/api/solicitacoes");
       setProcessos(response.data);
       console.log(response.data);
     } catch (error) {
@@ -23,7 +21,7 @@ function Cradt() {
   const formatarData = (data) => {
     const dataObj = new Date(data);
     const dia = String(dataObj.getDate()).padStart(2, "0");
-    const mes = String(dataObj.getMonth() + 1).padStart(2, "0"); 
+    const mes = String(dataObj.getMonth() + 1).padStart(2, "0");
     const ano = dataObj.getFullYear();
     return `${dia}/${mes}/${ano}`;
   };
@@ -111,7 +109,7 @@ function Cradt() {
             motivo={processo.motivo}
             dataSolicitacao={formatarData(processo.dataSolicitacao)}
             processo={processo.id || "N/A"}
-            status={processo.status}
+            statusDescricao={processo.statusDescricao}
           />
         ))}
       </div>

@@ -1,17 +1,15 @@
 .sidebar-nav {
   width: 15%;
   padding: 10px;
-
   display: flex;
   flex-direction: column;
   gap: 30px;
-
   background-color: #eaf4e0; 
+
 }
 
 .siddebar-items {
   display: flex;
-
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -35,7 +33,6 @@
 .items-icons-siddebar:hover {
 
   border-radius: 4px;
-
   cursor: pointer;
   background-color: #a0b888;
 }

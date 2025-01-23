@@ -1,17 +1,14 @@
 .container {
-    width: 100vw;
-    height: 100vh;
-    overflow-x: hidden;
+  width: 100vw;
+  /* height: 100vh; */
+  overflow-x: hidden;
 }
 
 .wrapper {
-    width: 100vw;
-<<<<<<< HEAD
-=======
-    background: #ffff;
->>>>>>> fd42da1ebfbecc3c5c02efc96ecc091854ca3cd2
+  width: 100vw;
+  background: #ffff;
 }
 
 .wrapper-content {
-    display: flex;
+  display: flex;
 }

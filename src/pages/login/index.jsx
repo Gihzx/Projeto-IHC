@@ -1,9 +1,31 @@
 import { useState } from "react";
 import "./styles.css";
+// import api from "../../api";
 export default function Login() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+
+//   useEffect(()=>{
+//     fetchSolicitacao()
+//   },[])
+
+//   const request = {
+//     email:email,
+//     password:password
+//   }
+//   const fetchSolicitacao = async () => {
+//     try {
+//       const response = await api.post(
+//         "http://localhost:8080/api/solicitacoes/abono", request,
+//       );
+      
+//       console.log(response.data);
+//     } catch (error) {
+//       console.error("erro ao listar solicitação", error);
+//     }
+//   };
   return (
+    
     <>
       <div className="container">
         <div className="login">
