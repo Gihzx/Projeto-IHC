@@ -1,18 +1,40 @@
 import "./styles.css";
+import { useState } from "react";
+import api from "../../api";
 import { useNavigate } from "react-router-dom";
 
 function CardProcessos(props) {
   const navigate = useNavigate();
-
-  const handleProcessoClick = () => {
-    if (props.processo) { // Mude para props.processo
-      console.log("Navigating to:", `/solicitacoes/${props.processo}`);
+  const [atender, setAtender] = useState("");
+  const patchSolicitacao = async (id) => {
+    if (!id) {
+      console.error("ID inválido");
+      return;
+    }
+  
+    try {
+      console.log("Enviando PATCH para ID:", id);
+      const response = await api.patch(`http://localhost:8080/api/solicitacoes/${id}/atender`);
+      setAtender(response.data); // Atualiza o estado se necessário
+      console.log("Status atualizado com sucesso!", response.data);
+    } catch (error) {
+      console.error("Erro ao atender solicitação", error);
+    }
+  };
+  
+  const handleProcessoClick = async () => {
+    if (props.processo) {
+      console.log("Navigando para:", `/solicitacoes/${props.processo}`);
+  
+      // Atualiza o status antes de navegar
+      await patchSolicitacao(props.processo);
+  
+      // Após o PATCH, navega para a página da solicitação
       navigate(`/solicitacoes/${props.processo}`);
     } else {
       console.error("ID não encontrado para a solicitação.");
     }
   };
-  
 
   return (
     <div className="container-card">
