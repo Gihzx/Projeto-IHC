@@ -4,11 +4,12 @@
     border: 2px solid #DFEEDD;
     background-color: #DFEEDD;
 }
-
+p{
+    font-size: 19px;
+}
 .header-card {
     width: 100%;
     padding: 4px;
-
     display: flex;
     align-items: center;
 
@@ -69,6 +70,7 @@
 .body-card-details > span {
     font-size: 10px;
     color: #000000d3;
+    font-size: medium;
 }
 
 .footer-card {
