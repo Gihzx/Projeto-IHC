@@ -1,0 +1,14 @@
+.container-detalhes {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  margin-left: 25rem;
+}
+
+.button {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  gap: 10px;
+}

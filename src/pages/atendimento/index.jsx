@@ -1,44 +1,64 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import api from "../../api";
+import "./styles.css";
 
 function DetalhesProcesso() {
   const [solicitacao, setSolicitacao] = useState(null);
   const [atender, setAtender] = useState("");
-  const { id } = useParams(); // Obtendo o id da URL
+  const [error, setError] = useState("");
+  const [status, setStatus] = useState("");
+  const [justificativa, setJustificativa] = useState("");
+  const { id } = useParams();
 
   useEffect(() => {
     if (id) {
-      fetchSolicitacao(id); // Passando o id para buscar os detalhes
+      fetchSolicitacao(id);
     }
   }, [id]);
 
   const fetchSolicitacao = async (id) => {
     try {
-      // Alterado para GET caso PATCH não seja apropriado
       const response = await api.get(
         `http://localhost:8080/api/solicitacoes/${id}`
       );
-      setSolicitacao(response.data); // Salvando os dados no estado
+      setSolicitacao(response.data);
     } catch (error) {
       console.error(`Erro ao buscar solicitação: ${error}`);
     }
   };
 
-  const patchSolcitacao = async (id) => {
-    console.log(id);
+  const patchConcluir = async (id) => {
     if (!id) {
       console.error("ID inválido");
       return;
     }
+
+    if (!status) {
+      setError("Erro: O campo status é obrigatório.");
+      return;
+    }
+
+    if (!justificativa) {
+      setError("Erro: O campo justificativa é obrigatório.");
+      return;
+    }
+    setError("");
+
+    const payload = { status, justificativa };
+
     try {
       const response = await api.patch(
-        `http://localhost:8080/api/solicitacoes/${id}/atender`,
-        console.log(id)
+        `http://localhost:8080/api/solicitacoes/${id}/concluir`,
+        payload
       );
+      console.log("Resposta da API:", response.data);
       setAtender(response.data);
     } catch (error) {
-      console.log("Erro ao atender solicitação", error);
+      console.error(
+        "Erro ao enviar resultado da atualização",
+        error.response?.data || error
+      );
     }
   };
   const formatarData = (data) => {
@@ -50,7 +70,7 @@ function DetalhesProcesso() {
   };
 
   return (
-    <div>
+    <div className="container-detalhes">
       <h1>Detalhes do Processo</h1>
       {solicitacao ? (
         <div>
@@ -64,9 +84,37 @@ function DetalhesProcesso() {
           <p>Arquivo:{solicitacao.anexo}</p>
         </div>
       ) : (
-        <p>Nenhuma solicitação encontrada ou carregando dados...</p>
+        <p> Nenhuma solicitação encontrada ou carregando dados...</p>
       )}
-      <button onClick={() => patchSolcitacao(id)}> Atender </button>
+      <div className="button">
+        <select
+          id="Selecione o resultado"
+          value={status}
+          onChange={(e) => setStatus(e.target.value)}
+        >
+          <option value="">Selecione</option>
+          <option value="indeferido">Indeferido</option>
+          <option value="deferido">Deferido</option>
+        </select>
+
+        <textarea
+          value={justificativa}
+          onChange={(e) => setJustificativa(e.target.value)}
+          placeholder="Digite a justificativa..."
+        />
+        {error && <p style={{ color: "red" }}>{error}</p>}
+        <button
+          onClick={() => {
+            if (solicitacao?.id) {
+              patchConcluir(solicitacao.id);
+            } else {
+              console.error("ID da solicitação não encontrado!");
+            }
+          }}
+        >
+          Concluir
+        </button>
+      </div>
     </div>
   );
 }
