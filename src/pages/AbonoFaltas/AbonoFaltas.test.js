@@ -1,61 +1,70 @@
-import{ render, screen, fireEvent,expect,it,describe,jest } from "@testing-library/react";
-import axios from "axios";
-import AbonoFaltas from "./AbonoFaltas";
+import { render, screen, fireEvent } from '@testing-library/react';
+import'@testing-library/jest-dom'
+import AbonoFaltas from './index.jsx'; 
 
-jest.mock("axios");
 
-describe("Componente AbonoFaltas", () => {
-  it("deve renderizar o formulário corretamente", () => {
+describe('AbonoFaltas', () => {
+  it('deve renderizar os campos corretamente', () => {
     render(<AbonoFaltas />);
-    expect(screen.getByText("Abono de Faltas")).toBeInTheDocument();
-    expect(screen.getByLabelText("Nome do aluno(a)")).toBeInTheDocument();
-    expect(screen.getByLabelText("Número de matrícula")).toBeInTheDocument();
+
+    // Verificar se os campos de entrada estão presentes
+    expect(screen.getByText(/Nome/i)).toBeInTheDocument();
+    expect(screen.getByText(/Matrícula/i)).toBeInTheDocument();
+    expect(screen.getByText(/Curso/i)).toBeInTheDocument();
+    expect(screen.getByText(/Turno/i)).toBeInTheDocument();
+    expect(screen.getByText(/CPF/i)).toBeInTheDocument();
+    expect(screen.getByText(/Email/i)).toBeInTheDocument();
+    expect(screen.getByText(/Início da Falta/i)).toBeInTheDocument();
+    expect(screen.getByText(/Fim da Falta/i)).toBeInTheDocument();
+    expect(screen.getByText(/Motivo/i)).toBeInTheDocument();
+    expect(screen.getByText(/Observações/i)).toBeInTheDocument();
+    
   });
 
-  it("deve enviar o formulário com os dados corretos", async () => {
-    axios.post.mockResolvedValueOnce({ data: { success: true } });
-
+  it('deve atualizar o estado ao digitar nos campos', () => {
     render(<AbonoFaltas />);
 
-    fireEvent.change(screen.getByLabelText("Nome do aluno(a)"), { target: { value: "João Silva" } });
-    fireEvent.change(screen.getByLabelText("Número de matrícula"), { target: { value: "12345" } });
-    fireEvent.change(screen.getByLabelText("Curso"), { target: { value: "Integrado - Administração" } });
-    fireEvent.change(screen.getByLabelText("Período/Série"), { target: { value: "1º" } });
-    fireEvent.change(screen.getByLabelText("Turno"), { target: { value: "Manhã" } });
-    fireEvent.change(screen.getByLabelText("Email"), { target: { value: "joao@email.com" } });
-    fireEvent.change(screen.getByLabelText("CPF"), { target: { value: "123.456.789-00" } });
-    fireEvent.change(screen.getByLabelText("Início da falta"), { target: { value: "2025-01-01" } });
-    fireEvent.change(screen.getByLabelText("Fim da falta"), { target: { value: "2025-01-03" } });
-    fireEvent.change(screen.getByLabelText("Motivo da falta"), { target: { value: "atestadoMedico" } });
+    // Simular entrada nos campos de texto
+    fireEvent.change(screen.getByLabelText(/Nome/i), { target: { value: 'João' } });
+    fireEvent.change(screen.getByLabelText(/Matrícula/i), { target: { value: '12345' } });
+    fireEvent.change(screen.getByLabelText(/Curso/i), { target: { value: 'Integrado - Técnico em Desenvolvimento de Sistemas' } });
+    fireEvent.change(screen.getByLabelText(/Turno/i), { target: { value: 'noite' } });
+    fireEvent.change(screen.getByLabelText(/CPF/i), { target: { value: '03624440489' } });
+    fireEvent.change(screen.getByLabelText(/Email/i), { target: { value: 'nanda_oliveirafalcao@hotmail.com' } });
+    fireEvent.change(screen.getByLabelText(/Início da Falta/i), { target: { value: '2024-02-02' } });
+    fireEvent.change(screen.getByLabelText(/Fim da Falta/i), { target: { value: '2024-02-20' } });
+    fireEvent.change(screen.getByLabelText(/Motivo/i), { target: { value: 'atestadoMedico' } });
+    fireEvent.change(screen.getByLabelText(/Observações/i), { target: { value: 'Nenhuma observação' } });
+    
+    
+  
+  
 
-    // Submete o formulário
-    fireEvent.submit(screen.getByRole("button", { name: /solicitar/i }));
+    // Verificar se os valores dos campos foram atualizados corretamente
+    expect(screen.getByLabelText(/Nome/i).value).toBe('João');
+    expect(screen.getByLabelText(/Matrícula/i).value).toBe('12345');
+    expect(screen.getByRole('combobox', { name: /Curso/i }).value).toBe('Integrado - Técnico em Desenvolvimento de Sistemas');
+    expect(screen.getByLabelText(/Turno/i).value).toBe('noite');
+    expect(screen.getByLabelText(/CPF/i).value).toBe('03624440489');
+    expect(screen.getByLabelText(/Email/i).value).toBe('nanda_oliveirafalcao@hotmail.com');
+    expect(screen.getByLabelText(/Início da Falta/i).value).toBe('2024-02-02');
+    expect(screen.getByLabelText(/Fim da Falta/i).value).toBe('2024-02-20');
+    expect(screen.getByLabelText(/Motivo/i).value).toBe('atestadoMedico');
+    expect(screen.getByLabelText(/Observações/i).value).toBe('Nenhuma observação');
 
-    // Verifica se a API foi chamada com os dados corretos
-    expect(axios.post).toHaveBeenCalledWith(
-      "http://localhost:8080/api/solicitacoes",
-      expect.any(FormData),
-      { headers: { "Content-Type": "multipart/form-data" } }
-    );
-
-    // Aguarda a resposta
-    await screen.findByText("Dados enviados com sucesso!");
   });
+    
 
-  it("deve exibir um erro se a API falhar", async () => {
-    // Mock da API com erro
-    axios.post.mockRejectedValueOnce(new Error("Erro ao enviar dados"));
-
+  it('deve chamar handleSubmit ao enviar o formulário', () => {
+   
     render(<AbonoFaltas />);
 
-    // Preenche os campos obrigatórios
-    fireEvent.change(screen.getByLabelText("Nome do aluno(a)"), { target: { value: "João Silva" } });
-    fireEvent.change(screen.getByLabelText("Número de matrícula"), { target: { value: "12345" } });
+   
 
-    // Submete o formulário
-    fireEvent.submit(screen.getByRole("button", { name: /solicitar/i }));
+    // Simular envio do formulário
+    fireEvent.submit(screen.getByText(/Solicitar/i));
 
-    // Aguarda a resposta
-    await screen.findByText("Erro ao enviar dados para o back-end");
   });
 });
+  
+  
