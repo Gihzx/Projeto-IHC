@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { MaterialSymbol } from "react-material-symbols";
-//import "./styles.css";
+import "./styles.css";
 
 function AbonoFaltas() {
   const [anexo, setAnexo] = useState({});

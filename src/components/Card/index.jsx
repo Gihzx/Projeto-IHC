@@ -1,8 +1,7 @@
+import Dropdown from '../Dropdown';
 import './styles.css';
 
 export function Card(props) {
-    const urlIconAcessibilidade = './src/assets/acessibilidade.png';
-
     return (
         <div className="card-solicitacoes">
             <div className="card-header-solicitacoes">
@@ -21,7 +20,8 @@ export function Card(props) {
             </div>
             <div className="card-footer-solicitacoes">
                 <span className='container-button'><a className='btn-entrar-solicitacao' href={props.url_view}>Entrar</a></span>
-                <img className='icon-acss' src={urlIconAcessibilidade} alt=""/>
+                {/* <img className='icon-acss' src={urlIconAcessibilidade} alt=""/> */}
+                <Dropdown/>
             </div> 
         </div>
     )
