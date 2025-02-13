@@ -9,7 +9,7 @@ function Header() {
       <div className="container_logo">
         <img src={Logo} alt="" />
         <a href="/login">
-          <Button>Entrar</Button>
+          <Button>Logout</Button>
         </a>
       </div>
     </>

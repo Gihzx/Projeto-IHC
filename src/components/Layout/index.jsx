@@ -1,6 +1,5 @@
-import Header from "../Header";
-import Sidebar from "../Siddebar";
 import AppRoutes from "../../AppRoutes";
+import Header from "../Header";
 import './styles.css';
 
 function Layout() {
@@ -9,7 +8,7 @@ function Layout() {
             <div className="wrapper">
                 <Header/>
                 <div className="wrapper-content">
-                    <Sidebar/>
+                    {/* <Sidebar/> */}
                     <AppRoutes/>
                 </div>
             </div>

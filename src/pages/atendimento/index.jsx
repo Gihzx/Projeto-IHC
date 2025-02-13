@@ -9,6 +9,7 @@ function DetalhesProcesso() {
   const [error, setError] = useState("");
   const [status, setStatus] = useState("");
   const [justificativa, setJustificativa] = useState("");
+  const [loading, setLoading] = useState(false);
   const { id } = useParams();
 
   // Recuperando o token armazenado no localStorage
@@ -32,13 +33,14 @@ function DetalhesProcesso() {
       );
       setSolicitacao(response.data);
     } catch (error) {
+      setError("Erro ao carregar dados da solicitação.");
       console.error(`Erro ao buscar solicitação: ${error}`);
     }
   };
 
   const patchConcluir = async (id) => {
     if (!id) {
-      console.error("ID inválido");
+      setError("ID inválido");
       return;
     }
 
@@ -52,6 +54,7 @@ function DetalhesProcesso() {
       return;
     }
     setError("");
+    setLoading(true);
 
     const payload = { status, justificativa };
 
@@ -61,17 +64,16 @@ function DetalhesProcesso() {
         payload,
         {
           headers: {
-            Authorization: `Bearer ${token}`, // Adicionando o token no cabeçalho
+            Authorization: `Bearer ${token}`,
           },
         }
       );
-      console.log("Resposta da API:", response.data);
       setAtender(response.data);
+      setLoading(false);
     } catch (error) {
-      console.error(
-        "Erro ao enviar resultado da atualização",
-        error.response?.data || error
-      );
+      setLoading(false);
+      setError("Erro ao concluir a solicitação.");
+      console.error("Erro ao enviar resultado da atualização", error.response?.data || error);
     }
   };
 
@@ -82,6 +84,7 @@ function DetalhesProcesso() {
     const ano = dataObj.getFullYear();
     return `${dia}/${mes}/${ano}`;
   };
+
   return (
     <div className="container-detalhes">
       <h1>Detalhes do Processo</h1>
@@ -121,11 +124,12 @@ function DetalhesProcesso() {
             if (solicitacao?.id) {
               patchConcluir(solicitacao.id);
             } else {
-              console.error("ID da solicitação não encontrado!");
+              setError("ID da solicitação não encontrado!");
             }
           }}
+          disabled={loading}
         >
-          Concluir
+          {loading ? "Enviando..." : "Concluir"}
         </button>
       </div>
     </div>

@@ -1,25 +1,26 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+
 import AbonoFaltas from "./pages/AbonoFaltas";
-import Cradt from "./pages/Cradt";
-import Login from "./pages/login";
 import DetalhesProcesso from "./pages/atendimento";
-import { Status } from "./pages/status";
 import Cadastro from "./pages/cadastro";
+import Cradt from "./pages/Cradt";
+import Home from "./pages/Home";
+import Login from "./pages/login";
+import { Status } from "./pages/status";
 
 function AppRoutes() {
   return (
     <BrowserRouter>
       <Routes>
+      <Route path="/login" element={<Login />} />
+      <Route path="/cadastro" element={<Cadastro />} />
         <Route path="/" element={<Home />} />
         <Route path="/AbonoFaltas" element={<AbonoFaltas />}></Route>
         <Route path="/cradt" element={<Cradt />}></Route>
         <Route path="/solicitacoes/:id" element={<DetalhesProcesso />} />
-        <Route path="/login" element={<Login />} />
         <Route path="/status" element={<Status />} />
-        <Route path="/cadastro" element={<Cadastro />} />
-
-
+     
+      
       </Routes>
     </BrowserRouter>
   );

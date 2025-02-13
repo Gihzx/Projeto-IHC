@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Cadastro() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [tipo, setTipo] = useState("Discente"); // Estado para armazenar o tipo de usuário
+  const navigate = useNavigate();
 
   const handleCadastro = async () => {
     const url =
@@ -22,6 +24,7 @@ export default function Cadastro() {
 
       if (response.ok) {
         console.log("Cadastro realizado com sucesso!");
+        navigate("/login");
       } else {
         console.log("Erro ao cadastrar. Tente novamente.");
       }

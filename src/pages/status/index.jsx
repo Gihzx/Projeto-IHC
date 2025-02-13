@@ -1,6 +1,9 @@
-import "./styles.css"
+import Sidebar from "../../components/Siddebar";
+import "./styles.css";
 export function Status (){
     return (
+      <>
+            <Sidebar />
         <div className="container-atendimento">
           
           <div className="request-card">
@@ -32,5 +35,6 @@ export function Status (){
             </div>
           </div>
         </div>
+        </>
       );
 }

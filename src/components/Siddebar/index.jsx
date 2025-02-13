@@ -30,22 +30,22 @@ function Sidebar() {
         </span>
 
         {/* Exibe apenas para o Docente */}
-        {isDocente && (
+        
           <span className="items-icons-siddebar">
             <MaterialSymbol icon="assignment" size={30} weight={200} />
             <a href="/cradt">CRA - Coordenação de Registro Acadêmico</a>
           </span>
-        )}
+        
 
         {/* Condição para mostrar os itens só se não for docente */}
-        {!isDocente && (
+   
           <>
             <span className="items-icons-siddebar">
               <MaterialSymbol icon="assignment" size={30} weight={200} />
               <a href="/status">Minhas solicitações</a>
             </span>
           </>
-        )}
+      
 
         <span className="items-icons-siddebar">
           <MaterialSymbol icon="key" size={30} weight={200} />

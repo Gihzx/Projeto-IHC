@@ -1,9 +1,12 @@
-import { Card } from '../../components/Card'
+import { Card } from '../../components/Card';
+import Sidebar from '../../components/Siddebar';
+import "./styles.css";
 import Formulario from '/src/assets//formulario-de-assinatura.png';
-import "./styles.css"
-
 function Home() {
     return (
+        <>
+     
+     <Sidebar />
         <div className="container-home">
             <div className='container-card-list-solicitacoes'>
                 <Card
@@ -62,6 +65,7 @@ function Home() {
                 />
             </div>
         </div>
+        </>
     )
 }
 

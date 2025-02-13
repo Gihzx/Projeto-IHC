@@ -1,7 +1,8 @@
+import axios from "axios";
 import { useState } from "react";
 import { MaterialSymbol } from "react-material-symbols";
+import Sidebar from "../../components/Siddebar";
 import "./styles.css";
-import axios from "axios";
 
 
 function AbonoFaltas() {
@@ -93,6 +94,8 @@ function AbonoFaltas() {
   };
 
   return (
+    <>
+   <Sidebar />
     <div className="container-abono">
       <div className="home-titulo">
         <h2>Abono de Faltas</h2>
@@ -286,6 +289,7 @@ function AbonoFaltas() {
         </section>
       </main>
     </div>
+    </>
   );
 }
 
