@@ -11,6 +11,9 @@ function DetalhesProcesso() {
   const [justificativa, setJustificativa] = useState("");
   const { id } = useParams();
 
+  // Recuperando o token armazenado no localStorage
+  const token = localStorage.getItem("token");
+
   useEffect(() => {
     if (id) {
       fetchSolicitacao(id);
@@ -20,7 +23,12 @@ function DetalhesProcesso() {
   const fetchSolicitacao = async (id) => {
     try {
       const response = await api.get(
-        `http://localhost:8080/api/solicitacoes/${id}`
+        `http://localhost:8080/api/solicitacoes/${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`, // Adicionando o token no cabeçalho
+          },
+        }
       );
       setSolicitacao(response.data);
     } catch (error) {
@@ -50,7 +58,12 @@ function DetalhesProcesso() {
     try {
       const response = await api.patch(
         `http://localhost:8080/api/solicitacoes/${id}/concluir`,
-        payload
+        payload,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`, // Adicionando o token no cabeçalho
+          },
+        }
       );
       console.log("Resposta da API:", response.data);
       setAtender(response.data);
@@ -61,6 +74,7 @@ function DetalhesProcesso() {
       );
     }
   };
+
   const formatarData = (data) => {
     const dataObj = new Date(data);
     const dia = String(dataObj.getDate()).padStart(2, "0");
@@ -68,7 +82,6 @@ function DetalhesProcesso() {
     const ano = dataObj.getFullYear();
     return `${dia}/${mes}/${ano}`;
   };
-
   return (
     <div className="container-detalhes">
       <h1>Detalhes do Processo</h1>

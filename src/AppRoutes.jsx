@@ -5,6 +5,7 @@ import Cradt from "./pages/Cradt";
 import Login from "./pages/login";
 import DetalhesProcesso from "./pages/atendimento";
 import { Status } from "./pages/status";
+import Cadastro from "./pages/cadastro";
 
 function AppRoutes() {
   return (
@@ -16,6 +17,8 @@ function AppRoutes() {
         <Route path="/solicitacoes/:id" element={<DetalhesProcesso />} />
         <Route path="/login" element={<Login />} />
         <Route path="/status" element={<Status />} />
+        <Route path="/cadastro" element={<Cadastro />} />
+
 
       </Routes>
     </BrowserRouter>
