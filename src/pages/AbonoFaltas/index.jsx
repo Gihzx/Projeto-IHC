@@ -1,7 +1,8 @@
 import { useState } from "react";
-import axios from "axios";
 import { MaterialSymbol } from "react-material-symbols";
-//import "./styles.css";
+import "./styles.css";
+import axios from "axios";
+
 
 function AbonoFaltas() {
   const [anexo, setAnexo] = useState({});
@@ -16,9 +17,28 @@ function AbonoFaltas() {
   const [fimFalta, setFimFalta] = useState("");
   const [motivo, setMotivo] = useState("");
   const [observacoes, setObservacoes] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  // Supondo que você tem o token armazenado no localStorage
+  const token = localStorage.getItem("token");
+  console.log(token);
+
+  // Verifica se o token existe
+  if (!token) {
+    setErrorMessage("Usuário não autenticado. Faça login.");
+    console.log("Usuário não autenticado. Faça login.");
+
+    return null; // Ou redirecione para a página de login
+  }
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    // Verificar se campos obrigatórios estão preenchidos
+    if (!nome || !matricula || !curso || !periodo || !turno || !cpf || !email || !inicioFalta || !fimFalta || !motivo) {
+      setErrorMessage("Por favor, preencha todos os campos obrigatórios.");
+      return;
+    }
 
     const formData = new FormData();
     formData.append("nome", nome);
@@ -34,7 +54,7 @@ function AbonoFaltas() {
     formData.append("observacoes", observacoes);
 
     // Adicione o arquivo apenas se ele existir
-    if (anexo.file) {
+    if (anexo && anexo.file) {
       formData.append("file", anexo.file);
     }
 
@@ -45,10 +65,14 @@ function AbonoFaltas() {
         {
           headers: {
             "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${token}`, // Adicionando o token ao cabeçalho
           },
         }
+        
       );
       console.log("Dados enviados com sucesso!", response.data);
+
+      // Resetando os campos do formulário após o envio
       setAnexo({});
       setNome("");
       setMatricula("");
@@ -61,8 +85,10 @@ function AbonoFaltas() {
       setFimFalta("");
       setMotivo("");
       setObservacoes("");
+      setErrorMessage(""); // Limpar a mensagem de erro se o envio for bem-sucedido
     } catch (error) {
       console.error("Erro ao enviar dados para o back-end", error);
+      setErrorMessage("Erro ao enviar os dados. Tente novamente mais tarde.");
     }
   };
 
