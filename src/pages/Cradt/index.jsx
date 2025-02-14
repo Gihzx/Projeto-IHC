@@ -5,19 +5,36 @@ import "./styles.css";
 
 function Cradt() {
   const [processos, setProcessos] = useState([]);
+  const [errorMessage, setErrorMessage] = useState("");
+
   useEffect(() => {
     fetchSolicitacao();
   }, []);
 
+  const token = localStorage.getItem("token");
+  console.log(token);
+
+  if (!token) {
+    setErrorMessage("Usuário não autenticado. Faça login.");
+    console.log("Usuário não autenticado. Faça login.");
+    return null; // Ou redirecione para a página de login
+  }
+
   const fetchSolicitacao = async () => {
     try {
-      const response = await api.get("http://localhost:8080/api/solicitacoes");
+      const response = await api.get("http://localhost:8080/api/solicitacoes", {
+        headers: {
+          Authorization: `Bearer ${token}`, // Passando o token no cabeçalho da requisição
+        },
+      });
       setProcessos(response.data);
       console.log(response.data);
     } catch (error) {
-      console.error("erro ao listar solicitação", error);
+      console.error("Erro ao listar solicitação", error);
+      setErrorMessage("Erro ao carregar solicitações");
     }
   };
+
   const formatarData = (data) => {
     const dataObj = new Date(data);
     const dia = String(dataObj.getDate()).padStart(2, "0");
@@ -25,6 +42,7 @@ function Cradt() {
     const ano = dataObj.getFullYear();
     return `${dia}/${mes}/${ano}`;
   };
+
 
   return (
     <div className="container-cradt">
