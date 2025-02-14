@@ -1,5 +1,4 @@
 import "./styles.css";
-
 import { useState } from "react";
 import api from "../../api";
 import { useNavigate } from "react-router-dom";
@@ -7,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 function CardProcessos(props) {
   const navigate = useNavigate();
   const [atender, setAtender] = useState("");
-
+  
   // Recuperando o token do localStorage
   const token = localStorage.getItem("token");
 
@@ -21,14 +20,14 @@ function CardProcessos(props) {
       console.log("Enviando PATCH para ID:", id);
       const response = await api.patch(
         `http://localhost:8080/api/solicitacoes/${id}/atender`,
-        {}, // Enviar dados necessários se houver
+        {}, 
         {
           headers: {
-            Authorization: `Bearer ${token}`, // Adicionando o token no cabeçalho
+            Authorization: `Bearer ${token}`, 
           },
         }
       );
-      setAtender(response.data); // Atualiza o estado se necessário
+      setAtender(response.data); 
       console.log("Status atualizado com sucesso!", response.data);
     } catch (error) {
       console.error("Erro ao atender solicitação", error);
@@ -36,22 +35,22 @@ function CardProcessos(props) {
   };
 
   const handleProcessoClick = async () => {
-    if (props.processo) {
-      console.log("Navigando para:", `/solicitacoes/${props.processo}`);
+    const id = props.processo; 
 
-      // Atualiza o status antes de navegar
-      await patchSolicitacao(props.processo);
-
-      // Após o PATCH, navega para a página da solicitação
-      navigate(`/solicitacoes/${props.processo}`);
+    if (id) {
+      console.log("Navigando para:", `/solicitacoes/${id}`);
+      
+      
+      await patchSolicitacao(id);
+      
+      
+      navigate(`/solicitacoes/${id}`);
     } else {
       console.error("ID não encontrado para a solicitação.");
     }
   };
 
   return (
-    <>
-  
     <div className="container-card">
       <div className="header-card">
         <div className="logo-user-card">{props.sigla_nome}</div>
@@ -66,7 +65,7 @@ function CardProcessos(props) {
         <div className="body-card-details">
           <span>Motivo: {props.motivo}</span>
           <span>Data solicitação: {props.dataSolicitacao}</span>
-          <span>Processo: {props.id}</span>
+          <span>ID: {props.processo}</span> 
         </div>
       </div>
       <div className="footer-card">
@@ -78,7 +77,6 @@ function CardProcessos(props) {
         </button>
       </div>
     </div>
-    </>
   );
 }
 

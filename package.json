@@ -10,7 +10,7 @@
     "lint": "eslint .",
     "preview": "vite preview"
   },
-  "jest":{
+  "jest": {
     "testEnvironment": "jsdom"
   },
   "dependencies": {
@@ -19,7 +19,8 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-material-symbols": "^4.4.0",
-    "react-router-dom": "^6.26.0"
+    "react-router-dom": "^6.26.0",
+    "react-toastify": "^11.0.3"
   },
   "devDependencies": {
     "@babel/core": "^7.26.7",

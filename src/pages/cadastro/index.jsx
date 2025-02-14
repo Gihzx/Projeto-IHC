@@ -4,12 +4,12 @@ import { useNavigate } from "react-router-dom";
 export default function Cadastro() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [tipo, setTipo] = useState("Discente"); // Estado para armazenar o tipo de usuário
+  const [tipo, setTipo] = useState("Estudante"); // Estado para armazenar o tipo de usuário
   const navigate = useNavigate();
 
   const handleCadastro = async () => {
     const url =
-      tipo === "Discente"
+      tipo === "Estudante"
         ? "http://localhost:8080/api/estudante"
         : "http://localhost:8080/api/servidor";
 
@@ -56,8 +56,8 @@ export default function Cadastro() {
         />
       </div>
       <select onChange={(e) => setTipo(e.target.value)} value={tipo}>
-        <option value="Discente">Discente</option>
-        <option value="Docente">Docente</option>
+        <option value="Estudante">Estudante</option>
+        <option value="Servidor">Servidor</option>
       </select>
 
       <div className="buttons">
