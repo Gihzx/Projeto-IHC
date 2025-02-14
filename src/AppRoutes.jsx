@@ -12,15 +12,13 @@ function AppRoutes() {
   return (
     <BrowserRouter>
       <Routes>
-      <Route path="/login" element={<Login />} />
-      <Route path="/cadastro" element={<Cadastro />} />
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Login />} />
+        <Route path="/cadastro" element={<Cadastro />} />
+        <Route path="/card" element={<Home />} />
         <Route path="/AbonoFaltas" element={<AbonoFaltas />}></Route>
         <Route path="/cradt" element={<Cradt />}></Route>
         <Route path="/solicitacoes/:id" element={<DetalhesProcesso />} />
         <Route path="/status" element={<Status />} />
-     
-      
       </Routes>
     </BrowserRouter>
   );

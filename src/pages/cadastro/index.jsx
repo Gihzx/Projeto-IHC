@@ -24,7 +24,7 @@ export default function Cadastro() {
 
       if (response.ok) {
         console.log("Cadastro realizado com sucesso!");
-        navigate("/login");
+        navigate("/");
       } else {
         console.log("Erro ao cadastrar. Tente novamente.");
       }

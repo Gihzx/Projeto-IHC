@@ -8,7 +8,7 @@ function Header() {
     <>
       <div className="container_logo">
         <img src={Logo} alt="" />
-        <a href="/login">
+        <a href="/">
           <Button>Logout</Button>
         </a>
       </div>
