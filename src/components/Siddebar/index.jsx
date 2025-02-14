@@ -1,20 +1,21 @@
+import { useState, useEffect } from "react";
 import { MaterialSymbol } from "react-material-symbols";
 import "react-material-symbols/rounded";
 import "./styles.css";
-import { useState, useEffect } from "react";
 
 function Sidebar() {
-  const [isDocente, setIsDocente] = useState(false);
+  const [perfil, setPerfil] = useState(null);
 
   useEffect(() => {
-    // Supondo que você armazene o tipo de usuário no localStorage
-    const tipoUsuario = localStorage.getItem("tipoUsuario"); // ou qualquer outra maneira de identificar o tipo de usuário
-
-    // Exibir o item apenas se o usuário for docente
-    if (tipoUsuario === "docente") {
-      setIsDocente(true);
-    } else {
-      setIsDocente(false);
+    const token = localStorage.getItem("token");
+    
+    if (token) {
+      try {
+        const payload = JSON.parse(atob(token.split(".")[1])); // Decodifica o payload do JWT
+        setPerfil(payload.perfil); // Obtém o perfil do usuário
+      } catch (error) {
+        console.error("Erro ao decodificar o token:", error);
+      }
     }
   }, []);
 
@@ -29,23 +30,18 @@ function Sidebar() {
           <a href="/">Início</a>
         </span>
 
-        {/* Exibe apenas para o Docente */}
-        
+        {/* Exibe a rota conforme o perfil do usuário */}
+        {perfil === "SERVIDOR" ? (
           <span className="items-icons-siddebar">
             <MaterialSymbol icon="assignment" size={30} weight={200} />
             <a href="/cradt">CRA - Coordenação de Registro Acadêmico</a>
           </span>
-        
-
-        {/* Condição para mostrar os itens só se não for docente */}
-   
-          <>
-            <span className="items-icons-siddebar">
-              <MaterialSymbol icon="assignment" size={30} weight={200} />
-              <a href="/status">Minhas solicitações</a>
-            </span>
-          </>
-      
+        ) : perfil === "ESTUDANTE" ? (
+          <span className="items-icons-siddebar">
+            <MaterialSymbol icon="assignment" size={30} weight={200} />
+            <a href="/status">Minhas solicitações</a>
+          </span>
+        ) : null}
 
         <span className="items-icons-siddebar">
           <MaterialSymbol icon="key" size={30} weight={200} />
