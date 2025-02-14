@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { MaterialSymbol } from "react-material-symbols";
-import "./styles.css";
 import axios from "axios";
 
 
@@ -20,17 +19,6 @@ function AbonoFaltas() {
   const [observacoes, setObservacoes] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
-  // Supondo que você tem o token armazenado no localStorage
-  const token = localStorage.getItem("token");
-  console.log(token);
-
-  // Verifica se o token existe
-  if (!token) {
-    setErrorMessage("Usuário não autenticado. Faça login.");
-    console.log("Usuário não autenticado. Faça login.");
-
-    return null; // Ou redirecione para a página de login
-  }
 
   const handleSubmit = async (event) => {
     event.preventDefault();

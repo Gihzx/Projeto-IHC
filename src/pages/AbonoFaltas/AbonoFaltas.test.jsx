@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import'@testing-library/jest-dom'
-import AbonoFaltas from './index.jsx'; 
+import AbonoFaltas from '.';
 
 
 
@@ -45,7 +45,7 @@ describe('AbonoFaltas', () => {
     expect(screen.getByLabelText(/Nome/i).value).toBe('João');
     expect(screen.getByLabelText(/Matrícula/i).value).toBe('12345');
     expect(screen.getByRole('combobox', { name: /Curso/i }).value).toBe('Integrado - Técnico em Desenvolvimento de Sistemas');
-    expect(screen.getByLabelText(/Turno/i).value).toBe('noite'); //letra maiscula
+    expect(screen.getByLabelText(/Turno/i).value).toBe('noite');
     expect(screen.getByLabelText(/CPF/i).value).toBe('03624440489');
     expect(screen.getByLabelText(/Email/i).value).toBe('nanda_oliveirafalcao@hotmail.com');
     expect(screen.getByLabelText(/Início da Falta/i).value).toBe('2024-02-02');
