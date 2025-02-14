@@ -30,12 +30,25 @@ export default function Login() {
       const response = await api.post("/auth", request);
       console.log(response.data);
       const token = response.data.token;
+      const perfil = response.data.perfil; // Perfil vindo da resposta
+
       if (token) {
         localStorage.setItem("token", token);
+        localStorage.setItem("tipoUsuario", perfil); // Armazenando o tipo de usuário (perfil)
         setSuccessMessage("Login realizado com sucesso! Redirecionando..."); // Mensagem de sucesso
-        setTimeout(() => {
-          navigate("/"); // Redireciona para a página inicial após 2 segundos
-        }, 2000);
+
+        // Redirecionamento condicional
+        if (perfil === "SERVIDOR") {
+          // Redireciona para a página do CRA (para o servidor)
+          setTimeout(() => {
+            navigate("/cradt"); // Página do CRA
+          }, 2000);
+        } else {
+          // Redireciona para a página inicial do estudante
+          setTimeout(() => {
+            navigate("/"); // Página inicial para o estudante
+          }, 2000);
+        }
       } else {
         setErrorMessage("Erro: Token não encontrado.");
       }
@@ -73,8 +86,6 @@ export default function Login() {
           />
         </div>
 
-      
-
         <div className="buttons">
           <button onClick={handleLogin} disabled={isLoading}>
             {isLoading ? "Carregando..." : "Entrar"}
@@ -82,11 +93,10 @@ export default function Login() {
           <button className="botao">
             <a href="/cadastro">Cadastrar</a>
           </button>
-        
         </div>
       </div>
       {errorMessage && <div className="error-message">{errorMessage}</div>}
-      {successMessage && <div className="success-message">{successMessage}</div>} 
+      {successMessage && <div className="success-message">{successMessage}</div>}
     </>
   );
 }

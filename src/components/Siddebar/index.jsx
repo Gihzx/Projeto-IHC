@@ -4,17 +4,18 @@ import "./styles.css";
 import { useState, useEffect } from "react";
 
 function Sidebar() {
-  const [isDocente, setIsDocente] = useState(false);
+  const [isServidor, setIsServidor] = useState(false);
+  const [isEstudante, setIsEstudante] = useState(false);
 
   useEffect(() => {
     // Supondo que você armazene o tipo de usuário no localStorage
     const tipoUsuario = localStorage.getItem("tipoUsuario"); // ou qualquer outra maneira de identificar o tipo de usuário
 
-    // Exibir o item apenas se o usuário for docente
-    if (tipoUsuario === "docente") {
-      setIsDocente(true);
-    } else {
-      setIsDocente(false);
+    // Exibir o item apenas se o usuário for servidor (docente)
+    if (tipoUsuario === "SERVIDOR") {
+      setIsServidor(true);
+    } else if (tipoUsuario === "ESTUDANTE") {
+      setIsEstudante(true);
     }
   }, []);
 
@@ -29,23 +30,21 @@ function Sidebar() {
           <a href="/">Início</a>
         </span>
 
-        {/* Exibe apenas para o Docente */}
-        
+        {/* Exibe apenas para o Estudante */}
+        {isEstudante && (
+          <span className="items-icons-siddebar">
+            <MaterialSymbol icon="assignment" size={30} weight={200} />
+            <a href="/status">Minhas solicitações</a>
+          </span>
+        )}
+
+        {/* Exibe apenas para o Servidor */}
+        {isServidor && (
           <span className="items-icons-siddebar">
             <MaterialSymbol icon="assignment" size={30} weight={200} />
             <a href="/cradt">CRA - Coordenação de Registro Acadêmico</a>
           </span>
-        
-
-        {/* Condição para mostrar os itens só se não for docente */}
-   
-          <>
-            <span className="items-icons-siddebar">
-              <MaterialSymbol icon="assignment" size={30} weight={200} />
-              <a href="/status">Minhas solicitações</a>
-            </span>
-          </>
-      
+        )}
 
         <span className="items-icons-siddebar">
           <MaterialSymbol icon="key" size={30} weight={200} />
