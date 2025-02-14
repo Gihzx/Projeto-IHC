@@ -1,5 +1,6 @@
-import "./styles.css"
+//import "./styles.css"
 export function Status (){
+  
   
     return (
         <div className="container-atendimento">
