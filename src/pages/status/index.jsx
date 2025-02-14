@@ -1,6 +1,7 @@
 import Sidebar from "../../components/Siddebar";
 import "./styles.css";
 export function Status (){
+  
     return (
       <>
             <Sidebar />
@@ -16,6 +17,8 @@ export function Status (){
                 <p>Processo: 0000/2023/01234-56</p>
               </div>
             </div>
+            
+        
     
             <div className="progress-bar">
               <div className="step completed">
