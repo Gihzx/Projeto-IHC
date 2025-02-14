@@ -79,7 +79,7 @@ O projeto está configurado para utilizar Jest com o ambiente `jsdom` para teste
 ## Licença
 Este projeto está sob a licença MIT.
 
-   colaborador:
+## colaborador:
 Gisele Oliveira 
 Fernanda Falcão 
 Jaidene Maria
